@@ -1,26 +1,11 @@
-const a = 1
-const b = "Вторая переменная"
-
-const title = "ProjectJS"
+const title = prompt('Как называется ваш проект?', "projectJS");
 console.log(title);
-console.log(typeof title);
 
-const screens = "Простые, Сложные, Интерактивные"
+const screens = prompt('Какие типы экранов нужно разработать?', "Простые, Сложные, Интерактивные");
 console.log(screens);
-console.log(typeof screens);
-console.log(screens.split(", "));
 
-const screenPrice = 15000
-console.log("Стоимость верстки экранов " + screenPrice + "рублей/долларов/гривен/юани");
+const screenPrice  = prompt('Сколько будет стоить данная работа?', "1200");
+console.log(parseInt(screenPrice));
 
-const rollback = 50
-console.log(rollback);
-
-const fullPrice = 50000
-console.log("Стоимость разработки сайта " + fullPrice + " рублей/долларов/гривен/юани");
-console.log(fullPrice * (rollback/100));
-
-
-const adaptive = "true"
+const adaptive = confirm('Нужен ли адаптив на сайте?');
 console.log(adaptive);
-console.log(typeof adaptive);
