@@ -23,7 +23,7 @@ const appData = {
         return !isNaN(parseFloat(num)) && isFinite(num)
     },
     asking: function() {
-        appData.title = promt("Как называется Ваш проект?", "Калькулятор верстки")
+        appData.title = promt("Как называется Ваш проект??", "Калькулятор верстки")
         appData.screens = promt("Какие типы экранов нужно разрабатывать?", "Простые, сложные")
 
         do {
