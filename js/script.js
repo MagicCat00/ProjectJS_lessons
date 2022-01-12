@@ -25,7 +25,8 @@ const appData = {
     screenPrice: 0,
     adaptive: true,
     rollback: 10,
-    allServicePrices: 0,
+    servicePricesPercent: 0,
+    servicePricesNumber: 0,
     fullPrice: 0,
     servicePercentPrice: 0,
     servicesPercent: {},
@@ -43,13 +44,13 @@ const appData = {
     start: function () {
         appData.addScreens()
         appData.addServices()
-        // appData.asking()
-        // appData.addPrices()
+
+        appData.addPrices()
         // appData.getFullPrice()
         // appData.servicePercentPrice()
-        // appData.getTitle()
 
         // appData.logger()
+        console.log(appData);
     },
 
     addScreens: function () {
@@ -91,9 +92,6 @@ const appData = {
                 appData.servicesNumber[label.textContent] = +input.value
             }
         })
-
-        console.log(appData);
-
     },
 
     addScreenBlock: function () {
@@ -107,8 +105,8 @@ const appData = {
             appData.screenPrice += +screen.price
         }
         
-        for (let key of appData.services) {
-            appData.allServicePrices += appData.services[key]
+        for (let key of appData.servicesNumber) {
+            appData.servicePricesNumber += appData.servicesNumber[key]
         }
     },
 
@@ -135,7 +133,7 @@ const appData = {
             return "Ошибка"
         }
     },
-    
+
     logger: function () {
         console.log(appData.fullPrice);
         console.log(appData.servicePercentPrice);
