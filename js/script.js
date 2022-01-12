@@ -31,12 +31,13 @@ const appData = {
     services: {},
     init: function() {
         appData.addTitle()
-        appData.start()
+        startBtn.addEventListener('click', appData.start)
     },
     addTitle: function() {
-        console.log(title.textContent);
+        document.title = title.textContent
     },
     start: function () {
+        appData.addScreens()
         // appData.asking()
         // appData.addPrices()
         // appData.getFullPrice()
@@ -47,6 +48,11 @@ const appData = {
     },
     isNumber: function (num) {
         return !isNaN(parseFloat(num)) && isFinite(num)
+    },
+    addScreens: function () {
+        screens.forEach(function (screen) {
+            console.log(screen);
+        })
     },
     asking: function() {
         appData.title = prompt('Как называется Ваш проект?', 'Калькулятор верстки')
