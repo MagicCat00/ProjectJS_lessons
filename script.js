@@ -21,21 +21,21 @@ let screens = document.querySelectorAll('.screen')
 
 const appData = {
     title: '',
-    screens: '',
-    screenPrice: '',
+    screens: [],
+    screenPrice: 0,
     adaptive: true,
     rollback: 10,
     allServicePrices: 0,
     fullPrice: 0,
     servicePercentPrice: 0,
-    service1: '',
-    service2: '',
+    services: {},
+
     start: function () {
         appData.asking()
-        appData.allServicePrices = appData.getAllServicePrices()
-        appData.fullPrice = appData.getFullPrice()
-        appData.servicePercentPrice = appData.getServicePercentPrice()
-        appData.title = appData.getTitle()
+        appData.addPrices()
+        appData.getFullPrice()
+        appData.servicePercentPrice()
+        appData.getTitle()
 
         appData.logger()
     },
