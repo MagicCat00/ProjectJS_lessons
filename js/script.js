@@ -50,8 +50,12 @@ const appData = {
         return !isNaN(parseFloat(num)) && isFinite(num)
     },
     addScreens: function () {
-        screens.forEach(function (screen) {
-            console.log(screen);
+        screens.forEach(function (screen, index) {
+            const select = screen.querySelector('select')
+            const input = screen.querySelector('input')
+
+            console.log(select.value);
+            console.log(input.value);
         })
     },
     asking: function() {
