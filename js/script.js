@@ -53,10 +53,16 @@ const appData = {
         screens.forEach(function (screen, index) {
             const select = screen.querySelector('select')
             const input = screen.querySelector('input')
+            const selectName = select.options[select.selectedIndex].textContent
 
-            console.log(select.value);
-            console.log(input.value);
+            appData.screens.push({
+                id: index, 
+                name: selectName, 
+                price: +select.value * +input.value
+            })
         })
+
+        console.log(appData.screens);
     },
     asking: function() {
         appData.title = prompt('Как называется Ваш проект?', 'Калькулятор верстки')
