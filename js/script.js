@@ -35,9 +35,11 @@ const appData = {
         startBtn.addEventListener('click', appData.start)
         buttonPlus.addEventListener("click", appData.addScreenBlock)
     },
+
     addTitle: function() {
         document.title = title.textContent
     },
+
     start: function () {
         appData.addScreens()
         appData.addServices()
@@ -49,6 +51,7 @@ const appData = {
 
         // appData.logger()
     },
+
     addScreens: function () {
         screens = document.querySelectorAll('.screen')
 
@@ -67,33 +70,36 @@ const appData = {
         console.log(appData.screens);
 
     },
+
     addServices: function() {
         otherItemsPercent.forEach(function(item) {
             const check = item.querySelector('input[type=checkbox]')
             const label = item.querySelector('label')
             const input = item.querySelector('input[type=text]')
 
-            console.log(check);
-            console.log(label);
-            console.log(input);
+            if(check.checked) {
+                appData.servicesPercent[label.textContent] = +input.value
+            }
         })
+
+        otherItemsNumber.forEach(function(item) {
+            const check = item.querySelector('input[type=checkbox]')
+            const label = item.querySelector('label')
+            const input = item.querySelector('input[type=text]')
+
+            if(check.checked) {
+                appData.servicesNumber[label.textContent] = +input.value
+            }
+        })
+
+        console.log(appData);
+
     },
+
     addScreenBlock: function () {
         const cloneScreen = screens[0].cloneNode(true)
 
         screens[screens.length - 1].after(cloneScreen)
-    },
-    asking: function() {
-        for (let i = 0; i < 2; i++) {
-            let name = prompt("Какая дополнительная услуга нужна?")
-            let price = 0
-
-            do {
-                price = prompt("Сколько будет стоить?")
-            } while (!appData.isNumber(price))
-
-            appData.services[name] = +price
-        }
     },
     
     addPrices: function () {
@@ -105,15 +111,19 @@ const appData = {
             appData.allServicePrices += appData.services[key]
         }
     },
+
     getFullPrice: function () {
         appData.fullPrice = +appData.screenPrice + appData.allServicePrices
     },
+
     getServicePercentPrice: function () {
         appData.servicePercentPrice - appData.fullPrice - (appData.fullPrice * (appData.rollback / 100))
     },
+
     getTitle: function () {
         appData.title = appData.title.trim()[0].toUpperCase() + appData.title.trim().substr(1).toLowerCase()
     },
+
     getRollbackMessage: function (price) {
         if (price >= 30000) {
             return "Скидка 10%"
@@ -125,6 +135,7 @@ const appData = {
             return "Ошибка"
         }
     },
+    
     logger: function () {
         console.log(appData.fullPrice);
         console.log(appData.servicePercentPrice);
