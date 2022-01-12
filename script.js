@@ -29,15 +29,21 @@ const appData = {
     fullPrice: 0,
     servicePercentPrice: 0,
     services: {},
-
+    init: function() {
+        appData.addTitle()
+        appData.start()
+    },
+    addTitle: function() {
+        console.log(title.textContent);
+    },
     start: function () {
-        appData.asking()
-        appData.addPrices()
-        appData.getFullPrice()
-        appData.servicePercentPrice()
-        appData.getTitle()
+        // appData.asking()
+        // appData.addPrices()
+        // appData.getFullPrice()
+        // appData.servicePercentPrice()
+        // appData.getTitle()
 
-        appData.logger()
+        // appData.logger()
     },
     isNumber: function (num) {
         return !isNaN(parseFloat(num)) && isFinite(num)
@@ -105,4 +111,4 @@ const appData = {
         console.log(appData.screens);
     }
 }
-appData.start()
+appData.init()
