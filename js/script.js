@@ -2,7 +2,7 @@
 
 const title = document.getElementsByTagName('h1')[0]
 const buttonPlus = document.querySelector('.screen-btn')
-const otherItemsPercent = document.querySelectorAll('.other-items.persent')
+const otherItemsPercent = document.querySelectorAll('.other-items.percent')
 const otherItemsNumber = document.querySelectorAll('.other-items.number')
 
 const inputRange = document.querySelector('.rollback input')
@@ -28,7 +28,8 @@ const appData = {
     allServicePrices: 0,
     fullPrice: 0,
     servicePercentPrice: 0,
-    services: {},
+    servicesPercent: {},
+    servicesNumber: {},
     init: function() {
         appData.addTitle()
         startBtn.addEventListener('click', appData.start)
@@ -39,6 +40,7 @@ const appData = {
     },
     start: function () {
         appData.addScreens()
+        appData.addServices()
         // appData.asking()
         // appData.addPrices()
         // appData.getFullPrice()
@@ -48,6 +50,8 @@ const appData = {
         // appData.logger()
     },
     addScreens: function () {
+        screens = document.querySelectorAll('.screen')
+
         screens.forEach(function (screen, index) {
             const select = screen.querySelector('select')
             const input = screen.querySelector('input')
@@ -61,6 +65,18 @@ const appData = {
         })
 
         console.log(appData.screens);
+
+    },
+    addServices: function() {
+        otherItemsPercent.forEach(function(item) {
+            const check = item.querySelector('input[type=checkbox]')
+            const label = item.querySelector('label')
+            const input = item.querySelector('input[type=text]')
+
+            console.log(check);
+            console.log(label);
+            console.log(input);
+        })
     },
     addScreenBlock: function () {
         const cloneScreen = screens[0].cloneNode(true)
