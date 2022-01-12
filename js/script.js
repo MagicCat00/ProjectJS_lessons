@@ -32,6 +32,7 @@ const appData = {
     init: function() {
         appData.addTitle()
         startBtn.addEventListener('click', appData.start)
+        buttonPlus.addEventListener("click", appData.addScreenBlock)
     },
     addTitle: function() {
         document.title = title.textContent
@@ -45,9 +46,6 @@ const appData = {
         // appData.getTitle()
 
         // appData.logger()
-    },
-    isNumber: function (num) {
-        return !isNaN(parseFloat(num)) && isFinite(num)
     },
     addScreens: function () {
         screens.forEach(function (screen, index) {
@@ -64,20 +62,12 @@ const appData = {
 
         console.log(appData.screens);
     },
+    addScreenBlock: function () {
+        const cloneScreen = screens[0].cloneNode(true)
+
+        screens[screens.length - 1].after(cloneScreen)
+    },
     asking: function() {
-        appData.title = prompt('Как называется Ваш проект?', 'Калькулятор верстки')
-
-        for (let i = 0; i < 2; i++) {
-            let name = prompt('Какие типы экранов нужно разрабатывать?', 'Простые, сложные')
-            let price = 0
-        
-            do {
-                price = prompt("Сколько будет стоить Ваша работа?")
-            } while (!appData.isNumber(price))
-
-            appData.screens.push({ id: i, name: name, price: price })
-        }
-
         for (let i = 0; i < 2; i++) {
             let name = prompt("Какая дополнительная услуга нужна?")
             let price = 0
@@ -88,8 +78,6 @@ const appData = {
 
             appData.services[name] = +price
         }
-
-        appData.adaptive = confirm("Нужен ли адаптив на сайте?")
     },
     
     addPrices: function () {
